@@ -9,7 +9,6 @@ const client = new Discord.Client({
 //Required paths
 
 const config = require("@root/config.json");
-const loadCommands = require("@root/commands/load-commands");
 const https = require("https");
 
 //BOT loader
@@ -20,10 +19,6 @@ client.on("ready", () => {
   client.user.setActivity(` Voxies Stonking`, {
     type: "WATCHING",
   });
-
-  //Importing addons
-
-  loadCommands(client);
 });
 
 client.on("ready", () => {
@@ -59,9 +54,7 @@ client.on("ready", () => {
             );
             //Godly
             try {
-              var Godly = `🟡 Godly: ${addComma(prices.Godly.price)} ${
-                prices.Godly.symbol
-              }`;
+              var Godly = `🟡 Godly: ${prices.Godly.price} ${prices.Godly.symbol}`;
               GodlyChannel.setName(Godly);
             } catch {
               var Godly = `🟡 Godly: None`;
@@ -69,9 +62,7 @@ client.on("ready", () => {
             }
             //Legendary
             try {
-              var Legendary = `🟠 Legendary: ${addComma(
-                prices.Legendary.price
-              )} ${prices.Legendary.symbol}`;
+              var Legendary = `🟠 Legendary: ${prices.Legendary.price} ${prices.Legendary.symbol}`;
               LegendaryChannel.setName(Legendary);
             } catch {
               var Legendary = `🟠 Legendary: None`;
@@ -79,9 +70,7 @@ client.on("ready", () => {
             }
             //Epic
             try {
-              var Epic = `🟣 Epic: ${addComma(prices.Epic.price)} ${
-                prices.Epic.symbol
-              }`;
+              var Epic = `🟣 Epic: ${prices.Epic.price} ${prices.Epic.symbol}`;
               EpicChannel.setName(Epic);
             } catch {
               var Epic = `🟣 Epic: None`;
@@ -89,9 +78,7 @@ client.on("ready", () => {
             }
             //Rare
             try {
-              var Rare = `🔵 Rare: ${addComma(prices.Rare.price)} ${
-                prices.Rare.symbol
-              }`;
+              var Rare = `🔵 Rare: ${prices.Rare.price} ${prices.Rare.symbol}`;
               RareChannel.setName(Rare);
             } catch {
               var Rare = `🔵 Rare: None`;
@@ -99,9 +86,7 @@ client.on("ready", () => {
             }
             //Uncommon
             try {
-              var Uncommon = `🟢 Uncommon: ${addComma(prices.Uncommon.price)} ${
-                prices.Uncommon.symbol
-              }`;
+              var Uncommon = `🟢 Uncommon: ${prices.Uncommon.price} ${prices.Uncommon.symbol}`;
               UncommonChannel.setName(Uncommon);
             } catch {
               var Uncommon = `🟢 Uncommon: None`;
@@ -109,9 +94,7 @@ client.on("ready", () => {
             }
             //Common
             try {
-              var Common = `⚪ Common: ${addComma(prices.Common.price)} ${
-                prices.Common.symbol
-              }`;
+              var Common = `⚪ Common: ${prices.Common.price} ${prices.Common.symbol}`;
               CommonChannel.setName(Common);
             } catch {
               var Common = `⚪ Common: None`;
@@ -122,10 +105,6 @@ client.on("ready", () => {
             console.log("Error: " + err.message);
           });
       });
-
-      function addComma(num) {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      }
     } catch (error) {
       console.log(error);
     }
